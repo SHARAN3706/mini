@@ -107,3 +107,28 @@ if not st.session_state.auth:
     login_screen()
 else:
     main_app()
+
+
+
+elif menu == "System Settings":
+        st.header("⚙️ System Settings")
+        st.write("Configure your Bio-Acoustic Sentry hardware and AI preferences.")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.subheader("AI Sensitivity")
+            st.slider("Human Intervention Tolerance (Hz)", min_value=1, max_value=20, value=15)
+            st.slider("Minimum Confidence Threshold (%)", min_value=50, max_value=99, value=90)
+            
+        with col2:
+            st.subheader("Hardware Configuration")
+            st.selectbox("Active Microphone Input", ["Default Browser Mic", "External USB Array", "Disabled"])
+            st.checkbox("Enable Auto-Pause on Human Detection", value=True)
+            st.checkbox("Save Audio Buffers to Ledger", value=False)
+            
+        st.divider()
+        st.subheader("Account & Security")
+        st.write(f"**Authorized User:** {st.session_state.user}")
+        if st.button("Revoke Google Access Data"):
+            st.warning("Access data cleared. (Simulation)")
