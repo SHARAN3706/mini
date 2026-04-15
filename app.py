@@ -102,15 +102,7 @@ def main_app():
         ])
         st.table(ledger_data)
 
-# --- ROUTING ---
-if not st.session_state.auth:
-    login_screen()
-else:
-    main_app()
-
-
-
-elif menu == "System Settings":
+    elif menu == "System Settings":
         st.header("⚙️ System Settings")
         st.write("Configure your Bio-Acoustic Sentry hardware and AI preferences.")
         
@@ -132,3 +124,9 @@ elif menu == "System Settings":
         st.write(f"**Authorized User:** {st.session_state.user}")
         if st.button("Revoke Google Access Data"):
             st.warning("Access data cleared. (Simulation)")
+
+# --- ROUTING ---
+if not st.session_state.auth:
+    login_screen()
+else:
+    main_app()
