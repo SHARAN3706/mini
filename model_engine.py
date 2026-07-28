@@ -45,10 +45,7 @@ class SentryEngine:
         for species, data in self.species_db.items():
             if data["freq"][0] <= centroid <= data["freq"][1]:
                 detected_name = species
-                tier = data["tier"]
-                break
-        
-        # 4. Immutable Ledger Hashing
+                tier 
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         event_string = f"{timestamp}-{detected_name}-{human_detected}"
         merkle_hash = hashlib.sha256(event_string.encode()).hexdigest()
